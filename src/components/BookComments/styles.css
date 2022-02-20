@@ -1,0 +1,23 @@
+.book-comments {
+  padding: 16px;
+  background-color: var(--background-color);
+}
+
+.book-comments__comment-actions {
+  cursor: pointer;
+}
+
+.book-comments__comment + .book-comments__comment {
+  margin-top: 8px;
+}
+
+.book-comments__new {
+  margin-top: 16px;
+}
+.book-comments__new-text {
+  width: 100%;
+  box-sizing: border-box;
+}
+.book-comments__new-text-buttons {
+  margin-top: 8px;
+}

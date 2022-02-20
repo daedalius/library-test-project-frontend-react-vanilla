@@ -6,8 +6,16 @@
     "lib": ["DOM", "ES2021"],
     "types": ["jest"],
     "paths": {
+      "#api": ["src/api"],
+      "#api/*": ["src/api/*"],
+      "#components": ["src/components"],
       "#components/*": ["src/components/*"],
-      "#storybook/*": [".storybook/*"]
+      "#entities": ["src/entities"],
+      "#entities/*": ["src/entities/*"],
+      "#utils": ["src/utils"],
+      "#utils/*": ["src/utils/*"],
+      "#storybook/*": [".storybook/*"],
+      "#/*": ["src/*"]
     },
     "esModuleInterop": true
   },

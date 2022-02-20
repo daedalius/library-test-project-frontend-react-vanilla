@@ -1,0 +1,16 @@
+button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
+  padding: 12px;
+  color: var(--color);
+  background-color: var(--background-color);
+  border: 2px solid var(--border-color);
+
+  cursor: pointer;
+}
+
+.buttons-block > button:not(:first-of-type),
+.buttons-block > input:not(:first-of-type) {
+  margin-left: -2px;
+}

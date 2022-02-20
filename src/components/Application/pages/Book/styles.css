@@ -1,0 +1,7 @@
+.book-page {
+  display: flex;
+}
+
+.book-page__comments {
+  margin-top: 24px;
+}

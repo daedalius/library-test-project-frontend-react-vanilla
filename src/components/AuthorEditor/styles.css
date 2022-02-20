@@ -1,0 +1,26 @@
+.author-editor__form {
+}
+
+.author-editor__form-row {
+  display: flex;
+  column-gap: 16px;
+}
+.author-editor__form-row + .author-editor__form-row {
+  width: 100%;
+  margin-top: 16px;
+}
+.author-editor__form-row label {
+  min-width: 100px;
+  text-align: right;
+}
+.author-editor__form-row input,
+.author-editor__form-row textarea,
+.author-editor__form-row select {
+  flex-grow: 1;
+}
+
+.author-editor__buttons-row {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}

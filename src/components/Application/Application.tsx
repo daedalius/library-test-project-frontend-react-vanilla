@@ -1,51 +1,60 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useCallback } from 'react';
+import React from 'react';
+import { Route, Routes, Link, Navigate } from 'react-router-dom';
+import { useAppInit } from './hooks/init';
 
-import lennaImageUrl from './images/lenna.png';
-import rgbMixUrl, { ReactComponent as RgbMix } from './images/rgb-mix.svg'
+import { CurrentUser } from './contexts/CurrentUser';
+import * as Pages from './pages';
+
+import { SignOut } from '#components/SignOut';
+import { CurrentUserInHeader } from '#components/CurrentUserInHeader';
+
+import { AuthorActions } from './pages/Librarian/components/AuthorActions';
+import { BookActions } from './pages/Librarian/components/BookActions';
+
+import './styles/buttons.css';
 import './styles.css';
 
-export const Application = () : JSX.Element => {
-  const handleUnitTestButtonClick = useCallback(() => {
-    console.log('called only during unit-tests');
-  }, [])
-  const handleComponentTestButtonClick = useCallback(() => {
-    console.log('called only during cypress component tests');
-  }, [])
-  const handleE2EButtonClick = useCallback(() => {
-    console.log('called only during e2e-tests');
-  }, [])
+export const Application = (): JSX.Element => {
+  const { isAppInitialized, currentUserContextValue } = useAppInit();
+
+  if (!isAppInitialized) {
+    return <p>Loading ...</p>;
+  }
+
   return (
-    <>
-      <h1>Hello!</h1>
-      <button onClick={handleUnitTestButtonClick}>Jest will click me</button>
-      <button onClick={handleComponentTestButtonClick}>Cypress component test will click me</button>
-      <button onClick={handleE2EButtonClick}>Cypress E2E will click me</button>
-
-      <section>
-        <p>Loading images via <b>file-loader</b> in the JSX:</p>
-        <img src={lennaImageUrl} alt="Lenna test image" />
-      </section>
-
-      <section>
-        <p>Loading images via <b>file-loader</b> in the CSS:</p>
-        <div className="lenna"></div>
-      </section>
-
-      <section>
-        <p>Loading images from the <b>public folder</b>:</p>
-        <img src="/public/lennaNegative.png" alt="Lenna test image" />
-      </section>
-      
-      <section>
-        <p>Loading SVG via <b>SVGR</b> as a React Component:</p>
-        <RgbMix width="256" />
-      </section>
-
-      <section>
-        <p>Loading SVG via <b>SVGR</b> by a reference:</p>
-        <img src={rgbMixUrl} alt="star" width="128" />
-      </section>
-    </>
+    <CurrentUser.Provider value={currentUserContextValue}>
+      <div className="application">
+        <div className="application__header">
+          <h1>
+            <Link to="/books">Library</Link>
+          </h1>
+          {currentUserContextValue.user ? (
+            <span className="application__header-service-pages-links">
+              <Link to="/librarian">Librarian menu</Link>
+            </span>
+          ) : null}
+          {currentUserContextValue.user ? <CurrentUserInHeader /> : null}
+          {currentUserContextValue.user ? <SignOut /> : null}
+        </div>
+        {currentUserContextValue.user ? (
+          <Routes>
+            <Route path="/" element={<Navigate to="/books" />} />
+            <Route path="librarian" element={<Pages.Librarian />}>
+              <Route path="authors" element={<AuthorActions />} />
+              <Route path="books" element={<BookActions />} />
+            </Route>
+            <Route path="books" element={<Pages.Books />} />
+            <Route path="book/:bookId" element={<Pages.Book />} />
+            <Route path="user/:userId" element={<Pages.User />} />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path="/*" element={<Navigate to="/sign-in" />} />
+            <Route path="/sign-in" element={<Pages.SignIn />} />
+          </Routes>
+        )}
+      </div>
+    </CurrentUser.Provider>
   );
-} ;
+};

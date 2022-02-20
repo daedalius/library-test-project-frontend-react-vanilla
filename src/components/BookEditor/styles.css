@@ -1,0 +1,26 @@
+.book-editor__form {
+}
+
+.book-editor__form-row {
+  display: flex;
+  column-gap: 16px;
+}
+.book-editor__form-row + .book-editor__form-row {
+  width: 100%;
+  margin-top: 16px;
+}
+.book-editor__form-row label {
+  min-width: 100px;
+  text-align: right;
+}
+.book-editor__form-row input,
+.book-editor__form-row textarea,
+.book-editor__form-row select {
+  flex-grow: 1;
+}
+
+.book-editor__buttons-row {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}

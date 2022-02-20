@@ -1,0 +1,11 @@
+.author-actions__search {
+  width: 100%;
+  box-sizing: border-box;
+}
+.author-actions__authors-found {
+  width: 100%;
+  box-sizing: border-box;
+}
+.author-actions__buttons {
+  margin-top: 16px;
+}

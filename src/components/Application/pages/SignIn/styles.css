@@ -1,0 +1,24 @@
+.sign-in {
+  display: grid;
+  grid-template-areas: 'login-label login' 'password-label password' 'button button';
+  gap: 8px;
+
+  padding: 24px;
+  background-color: var(--background-color);
+}
+
+.sign-in label {
+  text-align: right;
+}
+
+.sign-in [type='text'],
+.sign-in [type='password'] {
+  width: min-content;
+}
+
+.sign-in [type='submit'] {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: min-content;
+  margin-top: 8px;
+}

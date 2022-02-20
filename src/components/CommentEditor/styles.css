@@ -1,0 +1,16 @@
+.comment-editor__form {
+}
+
+.comment-editor__form-row {
+  display: flex;
+  column-gap: 16px;
+}
+.comment-editor__form-row textarea {
+  flex-grow: 1;
+}
+
+.comment-editor__buttons-row {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}

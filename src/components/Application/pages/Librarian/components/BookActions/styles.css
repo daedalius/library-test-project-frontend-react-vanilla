@@ -1,0 +1,11 @@
+.book-actions__search {
+  width: 100%;
+  box-sizing: border-box;
+}
+.book-actions__books-found {
+  width: 100%;
+  box-sizing: border-box;
+}
+.book-actions__buttons {
+  margin-top: 16px;
+}

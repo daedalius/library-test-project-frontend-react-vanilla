@@ -1,0 +1,14 @@
+.avatar {
+  aspect-ratio: 100%;
+  border-radius: 50%;
+}
+
+.avatar_small {
+  width: 32px;
+}
+.avatar_medium {
+  width: 48px;
+}
+.avatar_big {
+  width: 64px;
+}

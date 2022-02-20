@@ -1,0 +1,40 @@
+.book {
+  display: flex;
+  gap: 16px;
+}
+
+.book__cover {
+  width: 200px;
+  height: 200px;
+  cursor: none;
+  object-fit: contain;
+}
+.book__cover:hover {
+  transform: scale(1.5);
+  transition: transform 0.2s ease;
+}
+@media (prefers-reduced-motion) {
+  .book__cover:hover {
+    transform: none !important;
+  }
+}
+
+.book__cover:hover {
+  transform: scale(1.5);
+  transition: transform 0.2s ease;
+}
+
+.book__details {
+  width: calc(100% - 200px - 8px);
+}
+
+.book__title {
+  margin: 0;
+}
+.book__title > a {
+  color: var(--text-color);
+}
+
+.book__description {
+  font-style: italic;
+}

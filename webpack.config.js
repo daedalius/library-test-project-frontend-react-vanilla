@@ -5,6 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './src/main.tsx',
   output: {
+    publicPath: '/',
     path: resolve('./dist/app'),
   },
   module: {
@@ -70,8 +71,11 @@ module.exports = {
   },
   resolve: {
     alias: {
+      '#api': resolve(__dirname, `./src/api`),
       '#components': resolve(__dirname, `./src/components`),
+      '#entities': resolve(__dirname, `./src/entities`),
       '#public': resolve(__dirname, `./src/public`),
+      '#utils': resolve(__dirname, `./src/utils`),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
@@ -81,4 +85,17 @@ module.exports = {
       patterns: [{ from: 'public', to: 'public', filter: (resourcePath) => !resourcePath.includes('index.html') }],
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+    port: 8001,
+    open: {
+      target: 'http://127.0.0.1:8001'
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/api': '' },
+      },
+    },
+  },
 };
