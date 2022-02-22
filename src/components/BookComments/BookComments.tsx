@@ -144,7 +144,7 @@ export const BookComments = React.memo((props: { book: IBook }) => {
                 </div>
                 <div className="book-comments__comment-text">
                   {c.text}{' '}
-                  {c.userId === commentator.id ? (
+                  {userContext.user.id === commentator.id ? (
                     <span className="book-comments__comment-actions" title="edit comment">
                       <CommentEditor comment={c} onChange={handleCommentChange}>
                         ✏️

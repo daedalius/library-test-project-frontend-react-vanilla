@@ -1,11 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+
+import { CurrentUser } from '#components/Application/contexts/CurrentUser';
 
 import './styles.css';
 
 export const Librarian = React.memo(() => {
+  const userContext = useContext(CurrentUser);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userContext.user.role !== 'librarian') navigate('/books');
+  }, [userContext.user.role, navigate]);
 
   useEffect(() => {
     if (location.pathname === '/librarian') navigate('authors');

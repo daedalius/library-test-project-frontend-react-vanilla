@@ -29,7 +29,7 @@ export const Application = (): JSX.Element => {
           <h1>
             <Link to="/books">Library</Link>
           </h1>
-          {currentUserContextValue.user ? (
+          {currentUserContextValue.user?.role === 'librarian' ? (
             <span className="application__header-service-pages-links">
               <Link to="/librarian">Librarian menu</Link>
             </span>
