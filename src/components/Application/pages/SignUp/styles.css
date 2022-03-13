@@ -1,30 +1,30 @@
-.sign-in {
+.sign-up {
   display: grid;
-  grid-template-areas: 'login-label login' 'password-label password' 'button button' 'sign-up sign-up';
+  grid-template-areas: 'login-label login' 'password-label password' 'button button' 'sign-in sign-in';
   gap: 8px;
 
   padding: 24px;
   background-color: var(--background-color);
 }
 
-.sign-in label {
+.sign-up label {
   text-align: right;
 }
 
-.sign-in [type='text'],
-.sign-in [type='password'] {
+.sign-up [type='text'],
+.sign-up [type='password'] {
   width: min-content;
 }
 
-.sign-in [type='submit'] {
+.sign-up [type='submit'] {
   grid-column-start: 2;
   grid-column-end: 3;
   width: min-content;
   margin-top: 8px;
 }
 
-.sign-in__sign-up {
+.sign-up__sign-in {
   margin-top: 32px;
   text-align: center;
-  grid-area:  sign-up;
+  grid-area: sign-in;
 }

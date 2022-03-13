@@ -52,6 +52,7 @@ export const Application = (): JSX.Element => {
           <Routes>
             <Route path="/*" element={<Navigate to="/sign-in" />} />
             <Route path="/sign-in" element={<Pages.SignIn />} />
+            <Route path="/sign-up" element={<Pages.SignUp />} />
           </Routes>
         )}
       </div>

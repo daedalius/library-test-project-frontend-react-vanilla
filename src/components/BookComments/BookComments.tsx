@@ -31,7 +31,7 @@ export const BookComments = React.memo((props: { book: IBook }) => {
             if (commentatorsIds.size) {
               const commentatorsQuery = await getUsers(Array.from(commentatorsIds));
               if (commentatorsQuery.response.ok) {
-                setCommentators(commentatorsQuery.responseBody);
+                setCommentators((commentators) => [...commentators, ...commentatorsQuery.responseBody]);
                 setComments(responseBody);
                 setIsLoadingStatus(false);
                 setIsLoadingErrorStatus(false);

@@ -30,6 +30,7 @@ export async function signUp(credentials: ICredentials) {
     method: 'POST',
     body: JSON.stringify(credentials),
     credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
   });
 
   return {
