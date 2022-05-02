@@ -9,10 +9,10 @@ export function Book(props: { book: IBook }) {
   const { id, title, authors, description, coverUrl } = props.book;
 
   return (
-    <div className="book">
+    <div className="book" data-element="book">
       {coverUrl ? <img className="book__cover" src={coverUrl}></img> : null}
       <div className="book__details">
-        <h3 className="book__title">
+        <h3 className="book__title" data-element="title">
           <Link to={'/book/' + id}>{title}</Link>
         </h3>
         <p className="book__authors">Authors: {authors.map((a) => a.name).join(', ')}</p>

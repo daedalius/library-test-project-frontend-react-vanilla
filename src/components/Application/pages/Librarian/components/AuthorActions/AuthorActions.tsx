@@ -90,7 +90,12 @@ export const AuthorActions = React.memo(() => {
         onChange={handleAuthorSubstringChange}
         value={searchSubstring}
       />
-      <select className="author-actions__authors-found" onChange={handleAuthorSelectChange} size={7}>
+      <select
+        className="author-actions__authors-found"
+        data-element="authors-found"
+        onChange={handleAuthorSelectChange}
+        size={7}
+      >
         {authorsFound.map((a) => (
           <option key={a.id} value={a.id}>
             {a.name}

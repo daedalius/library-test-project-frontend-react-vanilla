@@ -129,7 +129,7 @@ export const BookComments = React.memo((props: { book: IBook }) => {
   if (isLoadingErrorStatus)
     return <div className="book-comments book-comments_error">Error while getting comments list</div>;
   return (
-    <div className="book-comments">
+    <div className="book-comments" data-element="book-comments">
       {comments.length ? (
         <div className="book-comments__comments">
           <p>Comments:</p>

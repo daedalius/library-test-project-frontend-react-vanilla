@@ -32,7 +32,7 @@ describe('For user with librarian role the application', () => {
     it('allows to edit an author', () => {
       cy.visit('/librarian/authors');
       cy.get('input[placeholder="Author name to search"]').type('Shakespeare');
-      cy.get('.author-actions__authors-found').select('William Shakespeare');
+      cy.get('[data-element="authors-found"]').select('William Shakespeare');
       cy.contains('Edit an author').click();
       // act
       cy.get('input[placeholder="Author name"]').clear().type('William Shakespeare Edited{enter}');
@@ -44,7 +44,7 @@ describe('For user with librarian role the application', () => {
     it('not allows to remove an author who mentioned as book author', () => {
       cy.visit('/librarian/authors');
       cy.get('input[placeholder="Author name to search"]').type('Shakespeare');
-      cy.get('.author-actions__authors-found').select('William Shakespeare');
+      cy.get('[data-element="authors-found"]').select('William Shakespeare');
 
       cy.on('window:alert', (text) => {
         // assert
@@ -60,13 +60,13 @@ describe('For user with librarian role the application', () => {
       cy.get('button').contains('Add an author').click();
       cy.get('input[placeholder="Author name"]').type('NewAuthor{enter}');
       cy.get('input[placeholder="Author name to search"]').type('NewAuthor');
-      cy.get('.author-actions__authors-found').select('NewAuthor');
+      cy.get('[data-element="authors-found"]').select('NewAuthor');
 
       // act
       cy.get('button').contains('Remove an author').click();
 
       // assert
-      cy.get('.author-actions__authors-found').contains('NewAuthor').should('not.exist');
+      cy.get('[data-element="authors-found"]').contains('NewAuthor').should('not.exist');
     });
   });
 
@@ -132,31 +132,31 @@ describe('For user with librarian role the application', () => {
       cy.visit('/librarian/books');
       cy.get('input[placeholder="Book title or description to search"]').type('war');
       cy.get('select').select('War and peace');
-      cy.get('button').contains('Edit copies').click()
+      cy.get('button').contains('Edit copies').click();
 
       // assert
-      cy.contains('No registered copies for that book')
+      cy.contains('No registered copies for that book');
 
       // act
-      cy.get('input[value="Register new copy"]').click()
+      cy.get('input[value="Register new copy"]').click();
 
       // assert
-      cy.get('select.book-copies-editor__list option').should('exist')
-    })
+      cy.get('select.book-copies-editor__list option').should('exist');
+    });
 
     it('allows to remove book copy', () => {
       cy.visit('/librarian/books');
       cy.get('input[placeholder="Book title or description to search"]').type('war');
       cy.get('select').select('War and peace');
-      cy.get('button').contains('Edit copies').click()
-      cy.get('input[value="Register new copy"]').click()
-      cy.get('select.book-copies-editor__list').select(0)
+      cy.get('button').contains('Edit copies').click();
+      cy.get('input[value="Register new copy"]').click();
+      cy.get('select.book-copies-editor__list').select(0);
 
       // act
-      cy.get('input[value="Remove a book copy"]').click()
+      cy.get('input[value="Remove a book copy"]').click();
 
       // assert
-      cy.contains('No registered copies for that book')
-    })
+      cy.contains('No registered copies for that book');
+    });
   });
 });
